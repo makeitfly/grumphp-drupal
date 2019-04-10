@@ -1,0 +1,20 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin # depends on the project configuration
+    ascii:
+    tasks:
+        git_blacklist:
+            keywords:
+                - '(var_|)dump\(.*\);*'
+                - 'die(;|\(.*\));*'
+                - 'dpm\(.*\);*'
+            regexp_type: P
+            triggered_by: ['php','module','inc']
+
+        phpcs:
+            standard: './vendor/nascom/grumphp-drupal/src/CodingStandards/Drupal'
+            triggered_by: ['php','module','inc']
+
+        phpstan:
+            level: 1
+            triggered_by: ['php','module','inc']

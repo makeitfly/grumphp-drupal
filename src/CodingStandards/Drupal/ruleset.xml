@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="nascom-drupal">
+    <rule ref="vendor/drupal/coder/coder_sniffer/Drupal">
+        <exclude name="Drupal.Commenting"/>
+    </rule>
+</ruleset>
