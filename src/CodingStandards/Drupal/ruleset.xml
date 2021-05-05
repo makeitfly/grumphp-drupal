@@ -2,5 +2,12 @@
 <ruleset name="nascom-drupal">
     <rule ref="vendor/drupal/coder/coder_sniffer/Drupal">
         <exclude name="Drupal.Commenting"/>
+        <exclude name="Generic.Files.LineLength.MaxExceeded" />
+        <exclude name="Drupal.Files.LineLength.TooLong" />
+    </rule>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+        </properties>
     </rule>
 </ruleset>
