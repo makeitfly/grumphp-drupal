@@ -7,11 +7,6 @@ use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
-/**
- * Class NascomGrumPhpConfiguratorPlugin
- *
- * @package Nascom\GrumPhpDrupal\Composer\Plugins
- */
 class NascomGrumPhpConfiguratorPlugin implements PluginInterface, EventSubscriberInterface
 {
     /**
@@ -36,24 +31,6 @@ class NascomGrumPhpConfiguratorPlugin implements PluginInterface, EventSubscribe
         $this->io = $io;
     }
 
-    /**
-     * Returns an array of event names this subscriber wants to listen to.
-     *
-     * The array keys are event names and the value can be:
-     *
-     * * The method name to call (priority defaults to 0)
-     * * An array composed of the method name to call and the priority
-     * * An array of arrays composed of the method names to call and respective
-     *   priorities, or 0 if unset
-     *
-     * For instance:
-     *
-     * * array('eventName' => 'methodName')
-     * * array('eventName' => array('methodName', $priority))
-     * * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
-     *
-     * @return array The event names to listen to
-     */
     public static function getSubscribedEvents()
     {
         return [
@@ -62,28 +39,33 @@ class NascomGrumPhpConfiguratorPlugin implements PluginInterface, EventSubscribe
         ];
     }
 
-    public function configureGrumPhp() {
-        $this->io->write(
-            '<fg=green>Copying grumphp.yml</fg=green>'
-        );
+    public function configureGrumPhp()
+    {
+        $configFiles = [
+            '/../../../grumphp.yml.dist' => './grumphp.yml.dist',
+            '/../../../phpstan.neon' => './phpstan.neon'
+        ];
 
-        if (!file_exists('./grumphp.yml')) {
-            if (!copy(__DIR__ . '/../../../grumphp.yml.dist', './grumphp.yml')) {
-                $this->io->write(
-                    '<fg=red>Copying config failed!</fg=red>'
-                );
-                return;
+        foreach ($configFiles as $source => $destination) {
+            if (file_exists($destination)) {
+                continue;
             }
 
-            $this->io->write(
-                '<fg=green>Copying config success!</fg=green>'
-            );
-            return;
-        }
+            $this->io->write('<fg=green>Copying configuration file...</fg=green>');
+            if (!copy(__DIR__ . $source, $destination)) {
+                $this->io->write('<fg=red>Copying config failed!</fg=red>');
+                continue;
+            }
 
-        $this->io->write(
-            '<fg=red>grumphp.yml already exists, skipping!</fg=red>'
-        );
-        return;
+            $this->io->write('<fg=green>Copying config success!</fg=green>');
+        }
+    }
+
+    public function deactivate(Composer $composer, IOInterface $io): void
+    {
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io): void
+    {
     }
 }

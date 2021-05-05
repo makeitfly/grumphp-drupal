@@ -1,7 +1,10 @@
-parameters:
-    git_dir: .
-    bin_dir: vendor/bin # depends on the project configuration
+grumphp:
     ascii:
+        succeeded: ~
+        failed: ~
+    # For local dev using ddev, uncomment this and run `grumphp git:init`
+    # git_hook_variables:
+    #     EXEC_GRUMPHP_COMMAND: 'ddev exec -d /var/www/html'
     tasks:
         git_blacklist:
             keywords:
@@ -18,3 +21,4 @@ parameters:
         phpstan:
             level: 1
             triggered_by: ['php','module','inc']
+            memory_limit: '-1'
