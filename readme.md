@@ -3,7 +3,7 @@ Basic GrumPHP Symfony configuration.
 
 ##  Requirements
 ```composer
-compser require --dev nascom/grumphp-drupal
+composer require --dev nascom/grumphp-drupal
 ```
 
 ##  Config
