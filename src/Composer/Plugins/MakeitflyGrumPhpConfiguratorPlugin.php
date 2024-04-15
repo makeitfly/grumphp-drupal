@@ -1,13 +1,13 @@
 <?php
 
-namespace Nascom\GrumPhpDrupal\Composer\Plugins;
+namespace Makeitfly\GrumPhpDrupal\Composer\Plugins;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
-class NascomGrumPhpConfiguratorPlugin implements PluginInterface, EventSubscriberInterface
+class MakeitflyGrumPhpConfiguratorPlugin implements PluginInterface, EventSubscriberInterface
 {
     /**
      * @var Composer
