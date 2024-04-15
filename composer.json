@@ -1,5 +1,5 @@
 {
-  "name": "nascom/grumphp-drupal",
+  "name": "makeitfly/grumphp-drupal",
   "type": "composer-plugin",
   "description": "GrumPHP + tools for Drupal",
   "require": {
@@ -11,11 +11,11 @@
     "mglaman/phpstan-drupal": "^1.1"
   },
   "extra": {
-    "class": "Nascom\\GrumPhpDrupal\\Composer\\Plugins\\NascomGrumPhpConfiguratorPlugin"
+    "class": "Makeitfly\\GrumPhpDrupal\\Composer\\Plugins\\MakeitflyGrumPhpConfiguratorPlugin"
   },
   "autoload": {
     "psr-4": {
-      "Nascom\\GrumPhpDrupal\\": "src/"
+      "Makeitfly\\GrumPhpDrupal\\": "src/"
     }
   }
 }
