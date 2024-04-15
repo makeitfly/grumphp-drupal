@@ -1,9 +1,9 @@
-# Nascom/GrumPHPDrupal
+# Makeitfly/GrumPHPDrupal
 Basic GrumPHP Symfony configuration.
 
 ##  Requirements
 ```composer
-composer require --dev nascom/grumphp-drupal
+composer require --dev makeitfly/grumphp-drupal
 ```
 
 ##  Config
