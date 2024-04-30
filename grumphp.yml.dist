@@ -15,7 +15,7 @@ grumphp:
             triggered_by: ['php','module','inc']
 
         phpcs:
-            standard: './vendor/nascom/grumphp-drupal/src/CodingStandards/Drupal'
+            standard: './vendor/makeitfly/grumphp-drupal/src/CodingStandards/Drupal'
             triggered_by: ['php','module','inc']
 
         phpstan:
